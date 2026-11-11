@@ -1,0 +1,71 @@
+export const messages = {
+  zh: {
+    appName: '用量手账', pageTitle: '用量手账 · ccusage 看板', tagline: '所有编码 Agent 的用量与费用', home: '用量手账首页',
+    localData: '本地数据', refresh: '立即刷新', collecting: '正在采集', refreshIn: '{time} 后刷新', refreshSoon: '即将自动刷新', autoRefresh: '每 20 分钟自动刷新',
+    navLabel: '看板页面', overview: '用量总览', cacheTab: 'Token 与缓存', filtersLabel: '用量筛选', dateRange: '日期范围',
+    tool: '工具', allAgents: '全部工具', withData: '有本机记录', withoutData: '暂无本机记录', grouping: '汇总', day: '日', week: '周', month: '月',
+    today: '今天', thisWeek: '本周', thisMonth: '本月', last30: '近 30 天', allHistory: '全部', custom: '自定义', startDate: '开始日期', endDate: '结束日期', to: '至',
+    previousPeriod: '上一期间', nextPeriod: '下一期间', allSavedHistory: '全部已保存的历史记录', timezone: '{zone} · 周一为一周起点', invalidDate: '开始日期不能晚于结束日期。',
+    periodMetrics: '期间用量总览', estimatedCost: '估算费用', costKnown: '美元 · 已知价格部分', costEstimate: '美元 · 按 API 价格估算', costHelp: 'ccusage 根据本机日志与模型价格计算，不代表订阅账单。',
+    inputTokens: '输入 Token', inputNote: '包含普通输入、缓存读取与写入', outputTokens: '输出 Token', outputNote: '包含推理输出，不重复计数', cacheHitRate: '缓存命中率',
+    cacheNote: '读取缓存 {tokens} Token', cacheHelp: '缓存读取 Token ÷ 输入总量。缓存写入不算命中。',
+    tokenTrend: '用量随时间的变化', costTrend: '费用随时间的变化', tokenAllocation: '每一份 Token，花在哪里', noPeriodRecords: '当前期间暂无记录', aggregation: '按{group}汇总',
+    chartMetric: '图表指标', tokens: 'Token', cost: '费用', export: '导出报表', exportPrefix: '用量报表', unitTokens: '单位：Token', unitUSD: '单位：美元 USD',
+    totalSummary: '总计 {tokens} Token · 有记录 {days} 天', retainedLogs: '仅统计本机保留的日志', rangeEdges: '周 / 月边缘只计入所选日期范围', total: '合计',
+    emptyTitle: '这段时间还没有用量记录', emptyBody: '切换日期范围，或使用工具后点击“立即刷新”。',
+    sourcesTitle: '各个 Agent 的用量', filterNote: '与当前日期和工具筛选保持一致', partialKnown: '已知部分',
+    compositionTitle: 'Token 构成', cacheFormula: '缓存命中率 = 缓存读取 ÷ 输入总量；写入不算命中', totalShare: '{share} 的总 Token',
+    freshInput: '普通输入', cacheRead: '缓存读取', cacheWrite: '缓存写入', output: '输出', breakdownNotice: '此来源的 Token 分项与报告总量不完全一致，按 ccusage 报告保留总量。',
+    modelUsage: '模型用量', modelsSort: '按 Token 用量排序', modelCount: '{count} 个模型', noModels: '当前期间暂无模型记录', cachedShare: '{share} 缓存',
+    periodDetails: '期间明细', recentFirst: '最近期间在前', rowCount: '{count} 条记录', period: '期间', inputTotal: '输入总量', hitRate: '命中率', noRows: '暂无记录', weekStart: '{date} 起',
+    loadingTitle: '正在整理本机用量', loadingBody: '首次读取历史日志可能需要一点时间。', notCollected: '尚未采集',
+    connectionError: '无法连接本地服务。请确认看板仍在运行；已有数据已保留。', preservedAt: '保留 {time} 的数据', unpricedModels: '以下模型缺少价格，费用显示已知部分：{models}',
+    persistenceFailed: '快照保存失败，当前数据仍可查看。请检查项目目录是否可写。', catalogWarning: '暂时无法读取完整 Agent 列表，已使用现有列表。',
+    ccusageWarning: 'ccusage 发出了采集警告，本次数据可能不完整。', noSourceData: '{name} 暂无本机用量记录；使用后即可在这里查看。',
+    sourcesSummary: '支持 {supported} 种 Agent · 已记录 {active} 种',
+    footerBilling: '基于 ccusage · 每 20 分钟自动采集 · API 价格估算，不代表订阅账单', footerScope: '费用采用内置价格；模型别名和价格档位可能导致估算偏差。仅统计本机保留的日志。',
+    collection_failed: '采集失败，已保留上次成功数据。请在终端检查 ccusage 报表。', collection_timeout: '读取用量超时，已保留上次成功数据。',
+    ccusage_missing: '未找到 ccusage，请在项目目录运行 npm install。', report_invalid: 'ccusage 报表格式无效，请检查版本与日志。',
+    csvPeriod: '期间', csvFresh: '普通输入Token', csvRead: '缓存读取Token', csvWrite: '缓存写入Token', csvInput: '输入总量Token', csvOutput: '输出Token', csvTotal: '总Token', csvHit: '缓存命中率', csvCost: '估算费用USD', csvComplete: '费用完整性',
+    csvPartial: '已知部分/缺少价格', csvKnown: '已知价格', language: '切换界面语言',
+  },
+  en: {
+    appName: 'Agent Usage', pageTitle: 'Agent Usage · ccusage dashboard', tagline: 'Usage and costs across coding agents', home: 'Agent Usage home',
+    localData: 'Local data', refresh: 'Refresh now', collecting: 'Collecting', refreshIn: 'Refresh in {time}', refreshSoon: 'Refreshing soon', autoRefresh: 'Refreshes every 20 minutes',
+    navLabel: 'Dashboard views', overview: 'Overview', cacheTab: 'Tokens & cache', filtersLabel: 'Usage filters', dateRange: 'Date range',
+    tool: 'Agent', allAgents: 'All agents', withData: 'Local history available', withoutData: 'No local history', grouping: 'Group by', day: 'day', week: 'week', month: 'month',
+    today: 'Today', thisWeek: 'This week', thisMonth: 'This month', last30: 'Last 30 days', allHistory: 'All time', custom: 'Custom', startDate: 'Start date', endDate: 'End date', to: 'to',
+    previousPeriod: 'Previous period', nextPeriod: 'Next period', allSavedHistory: 'All retained history', timezone: '{zone} · Weeks start on Monday', invalidDate: 'Start date cannot be later than end date.',
+    periodMetrics: 'Usage in the selected period', estimatedCost: 'Estimated cost', costKnown: 'USD · Known prices only', costEstimate: 'USD · API price estimate', costHelp: 'Calculated by ccusage from local logs and model prices; not your subscription bill.',
+    inputTokens: 'Input tokens', inputNote: 'Fresh input, cache reads and writes', outputTokens: 'Output tokens', outputNote: 'Includes reasoning; counted once', cacheHitRate: 'Cache hit rate',
+    cacheNote: '{tokens} tokens read from cache', cacheHelp: 'Cache read tokens / total input. Cache writes are not hits.',
+    tokenTrend: 'Usage over time', costTrend: 'Cost over time', tokenAllocation: 'Where your tokens go', noPeriodRecords: 'No records in this period', aggregation: 'Grouped by {group}',
+    chartMetric: 'Chart metric', tokens: 'Tokens', cost: 'Cost', export: 'Export CSV', exportPrefix: 'usage-report', unitTokens: 'Unit: tokens', unitUSD: 'Unit: USD',
+    totalSummary: '{tokens} tokens total · Recorded days: {days}', retainedLogs: 'Retained local logs only', rangeEdges: 'Edge weeks / months include only selected dates', total: 'Total',
+    emptyTitle: 'No usage recorded in this period', emptyBody: 'Choose another date range, or use an agent and select “Refresh now”.',
+    sourcesTitle: 'Usage by agent', filterNote: 'Uses the selected dates and agent filter', partialKnown: 'Known portion',
+    compositionTitle: 'Token composition', cacheFormula: 'Cache hit rate = cache reads / total input; writes are not hits', totalShare: '{share} of total tokens',
+    freshInput: 'Fresh input', cacheRead: 'Cache reads', cacheWrite: 'Cache writes', output: 'Output', breakdownNotice: 'Token categories differ from the reported total for this source. The ccusage total is preserved.',
+    modelUsage: 'Usage by model', modelsSort: 'Sorted by token usage', modelCount: 'Models: {count}', noModels: 'No model records in this period', cachedShare: '{share} cached',
+    periodDetails: 'Period details', recentFirst: 'Latest period first', rowCount: 'Records: {count}', period: 'Period', inputTotal: 'Total input', hitRate: 'Hit rate', noRows: 'No records', weekStart: 'From {date}',
+    loadingTitle: 'Reading local usage', loadingBody: 'The first scan of your history may take a moment.', notCollected: 'Not collected yet',
+    connectionError: 'Cannot reach the local service. Check that the dashboard is running; existing data is preserved.', preservedAt: 'Keeping data from {time}', unpricedModels: 'Prices are missing for these models; costs show the known portion: {models}',
+    persistenceFailed: 'Could not save the snapshot. Current data is still available; check that the project directory is writable.', catalogWarning: 'Could not read the full agent list. Using the existing list for now.',
+    ccusageWarning: 'ccusage reported collection warnings. This snapshot may be incomplete.', noSourceData: 'No local usage history for {name} yet. Use the agent to start recording usage.',
+    sourcesSummary: '{supported} supported agents · {active} with local history',
+    footerBilling: 'Powered by ccusage · Collected every 20 minutes · API price estimates, not subscription bills', footerScope: 'Uses bundled prices; model aliases and pricing tiers can affect estimates. Retained local logs only.',
+    collection_failed: 'Collection failed. Previous successful data is preserved. Check the ccusage report in your terminal.', collection_timeout: 'Collection timed out. Previous successful data is preserved.',
+    ccusage_missing: 'ccusage was not found. Run npm install in the project directory.', report_invalid: 'Invalid ccusage report. Check the installed version and local logs.',
+    csvPeriod: 'Period', csvFresh: 'Fresh input tokens', csvRead: 'Cache read tokens', csvWrite: 'Cache write tokens', csvInput: 'Total input tokens', csvOutput: 'Output tokens', csvTotal: 'Total tokens', csvHit: 'Cache hit rate', csvCost: 'Estimated cost USD', csvComplete: 'Cost completeness',
+    csvPartial: 'Known portion / missing prices', csvKnown: 'Known prices', language: 'Switch interface language',
+  },
+};
+
+export function translate(language, key, values = {}) {
+  const template = messages[language]?.[key] ?? messages.zh[key] ?? key;
+  return template.replace(/\{(\w+)\}/g, (match, name) => values[name] === undefined ? match : String(values[name]));
+}
+export function readLanguage(storage) {
+  try { const value = storage?.getItem('usage-dashboard-language'); return value === 'en' ? 'en' : 'zh'; }
+  catch { return 'zh'; }
+}

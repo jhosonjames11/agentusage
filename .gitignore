@@ -1,0 +1,26 @@
+node_modules/
+dist/
+.data/
+.DS_Store
+
+# Keep machine-specific configuration and private exports out of source control.
+.env
+.env.*
+!.env.example
+*.csv
+
+# Local artifacts and provider credentials
+*.log
+*.sqlite
+*.sqlite3
+*.db
+*.jsonl
+*.pem
+*.key
+*.p12
+*.pfx
+.npmrc
+.netrc
+credentials*
+auth.json
+.playwright*/
