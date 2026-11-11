@@ -12,7 +12,9 @@ Screenshot uses synthetic demonstration data. It contains no real user usage, ac
 
 ## Quick start
 
-Requires Node.js **22.12+** and npm. No Bun, API key, database, or hosted account is required.
+Use **Node.js 22.12+ and npm**, or **Bun** (verified with Bun **1.4.3**). No API key, database, or hosted account is required.
+
+### With Node.js and npm
 
 Clone the repository and start the dashboard:
 
@@ -25,6 +27,32 @@ npm run open
 ```
 
 Open **http://127.0.0.1:4320/**. `npm run open` starts a background service and opens your browser; it reuses an existing dashboard service. Use `npm run open -- --no-open` to start without opening a browser, `npm run status` to check it, and `npm run stop` to stop it. On macOS, you can also double-click `启动看板.command` / `停止看板.command` after installation and building.
+
+### With Bun
+
+Install [Bun](https://bun.sh/docs/installation), then run:
+
+```sh
+git clone https://github.com/jhosonjames11/agentusage.git
+cd agentusage
+bun install --frozen-lockfile
+bun --bun run build
+bun --bun run open
+```
+
+Open **http://127.0.0.1:4320/**. Bun imports the committed `package-lock.json` on the first install and generates a local `bun.lock`.
+
+Use `--bun` to run the existing scripts with the Bun runtime, including the background service and ccusage subprocess. Without this flag, the `node` commands in the package scripts still use Node.js.
+
+```sh
+bun --bun run open --no-open  # start without opening a browser
+bun --bun run status         # check the background service
+bun --bun run stop           # stop the background service
+```
+
+For a foreground service, use `bun --bun run start`. For frontend development, run `bun --bun run dev` in another terminal. Set a custom port with `USAGE_DASHBOARD_PORT=4322 bun --bun run open`; use the same port for `status` and `stop`.
+
+The macOS double-click launchers and the `npm test` suite use Node.js; use the Bun commands above to run the dashboard with Bun alone.
 
 The service collects on startup and every **20 minutes**, including while the browser is closed. Manual refresh restarts the 20-minute deadline. Start it again after restarting your computer.
 
@@ -78,7 +106,7 @@ USD amounts come directly from ccusage using its bundled model prices. **These a
 
 ## Refresh, storage, and privacy
 
-- The Node service owns the timer. The visible browser reads the cached snapshot every 15 seconds without running ccusage again.
+- The local service owns the timer. The visible browser reads the cached snapshot every 15 seconds without running ccusage again.
 - Concurrent refresh requests share one collection. A failed unified collection retains previous successful data and marks it stale. If ccusage emits warnings and a recorded source disappears, its prior data is retained until a clean report confirms the empty history.
 - `.data/usage.json` stores aggregate usage and model names, not conversation content. `.data/server.log` stores service logs. Both are ignored by Git.
 - The server binds to `127.0.0.1`, validates Host and Origin, and serves only built frontend files and aggregate API responses. It does not expose raw session files or credentials.

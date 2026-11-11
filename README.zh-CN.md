@@ -12,7 +12,11 @@
 
 ## 安装与启动
 
-需要 **Node.js 22.12+** 和 npm，无需 Bun、API Key、数据库或云端账户。克隆仓库后，在项目目录运行：
+可使用 **Node.js 22.12+ 和 npm**，或 **Bun**（已验证 **1.4.3**）。无需 API Key、数据库或云端账户。
+
+### 使用 Node.js 和 npm
+
+克隆仓库后，在项目目录运行：
 
 ```sh
 git clone https://github.com/jhosonjames11/agentusage.git
@@ -23,6 +27,32 @@ npm run open
 ```
 
 打开 **http://127.0.0.1:4320/**。启动器会复用已有服务；`npm run open -- --no-open` 可只启动后台服务。查看状态：`npm run status`；停止：`npm run stop`。macOS 安装并构建后，也可双击 `启动看板.command` / `停止看板.command`。
+
+### 使用 Bun
+
+安装 [Bun](https://bun.sh/docs/installation)，然后运行：
+
+```sh
+git clone https://github.com/jhosonjames11/agentusage.git
+cd agentusage
+bun install --frozen-lockfile
+bun --bun run build
+bun --bun run open
+```
+
+打开 **http://127.0.0.1:4320/**。首次安装时，Bun 会导入仓库中的 `package-lock.json`，并在本地生成 `bun.lock`。
+
+`--bun` 会让现有脚本使用 Bun 运行，包括后台服务和 ccusage 子进程；省略该参数时，脚本中的 `node` 命令仍使用 Node.js。
+
+```sh
+bun --bun run open --no-open  # 只启动后台服务，不打开浏览器
+bun --bun run status         # 查看后台服务状态
+bun --bun run stop           # 停止后台服务
+```
+
+前台运行：`bun --bun run start`。开发前端：另开终端运行 `bun --bun run dev`。更换端口：`USAGE_DASHBOARD_PORT=4322 bun --bun run open`，查询状态和停止时使用同一个端口。
+
+macOS 双击启动脚本和 `npm test` 测试套件使用 Node.js；仅安装 Bun 时，使用上面的 Bun 命令运行看板。
 
 启动立即采集，此后每 **20 分钟** 自动采集。浏览器和启动终端关闭后，后台服务继续运行。手动刷新后重新计时；重启电脑后需要重新启动服务。
 
@@ -64,7 +94,7 @@ npx --no-install ccusage daily --by-agent --json --offline --timezone Asia/Hong_
 
 ## 刷新、存储与隐私
 
-- Node 服务管理定时器；可见页面每 15 秒读取缓存快照，不会每 15 秒运行 ccusage。
+- 本地服务管理定时器；可见页面每 15 秒读取缓存快照，不会每 15 秒运行 ccusage。
 - 并发刷新合并为一次。统一采集失败时保留成功历史，标记过期；ccusage 警告期间若有来源消失，保留其历史，直到无警告的报表确认空记录。
 - `.data/usage.json` 保存聚合用量和模型名，不保存聊天正文；`.data/server.log` 保存运行日志，均被 Git 忽略。
 - 服务只绑定 `127.0.0.1`，验证 Host / Origin，只提供构建页面与聚合 API，不暴露原始会话或认证文件。
