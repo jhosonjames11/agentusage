@@ -160,7 +160,12 @@ export function compact(value, locale = 'zh-CN') {
 }
 
 export const fullNumber = (value, locale = 'zh-CN') => value == null ? '—' : new Intl.NumberFormat(locale, { maximumFractionDigits: 0 }).format(value);
-export const usd = value => value == null ? '—' : `$${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value)}`;
+export function usd(value) {
+  if (value == null) return '—';
+  if (value > 0 && value < 0.0001) return '<$0.0001';
+  const maximumFractionDigits = value > 0 && value < 0.01 ? 4 : 2;
+  return `$${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits }).format(value)}`;
+}
 export const percent = value => value == null ? '—' : `${(value * 100).toFixed(1)}%`;
 
 export function exportCsv(buckets, language = 'zh') {

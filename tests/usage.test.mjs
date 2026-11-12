@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { normalizeReport, buildView, periodRange, rollRelativeFilters } from '../src/domain/usage.mjs';
+import { normalizeReport, buildView, periodRange, rollRelativeFilters, usd } from '../src/domain/usage.mjs';
 
 // Catches billing cached input twice and using the wrong denominator.
 test('Codex input already contains cached tokens', () => {
@@ -79,4 +79,13 @@ test('relative month rolls at midnight; historical and custom ranges stay fixed'
   assert.deepEqual(rollRelativeFilters(history, '2026-11-30', '2026-12-01'), history);
   const custom = { ...current, period: 'custom' };
   assert.deepEqual(rollRelativeFilters(custom, '2026-11-30', '2026-12-01'), custom);
+});
+
+
+test('USD formatting distinguishes zero, small costs, and missing values', () => {
+  assert.equal(usd(null), '—');
+  assert.equal(usd(0), '$0.00');
+  assert.equal(usd(12345.678), '$12,345.68');
+  assert.equal(usd(0.0043), '$0.0043');
+  assert.equal(usd(0.00001), '<$0.0001');
 });

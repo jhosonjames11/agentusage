@@ -245,3 +245,65 @@ tbody tr:hover { background: #eff3e8; }
   .period-buttons button { padding: 8px 12px; }
   .agent-row { grid-template-columns: minmax(90px, 1fr) 1fr 85px; gap: 12px; }
 }
+
+/* A quiet, data-first workspace: neutral surfaces and restrained accents. */
+:root {
+  color: #242629;
+  background: #f7f7f5;
+  --green: #385c79;
+  --muted: #70757b;
+  --border: #e1e2e2;
+}
+.app-shell { max-width: 1360px; }
+.app-header { height: 90px; }
+.brand { gap: 11px; }
+.brand-icon { width: 36px; height: 36px; border-radius: 7px; background: #292d31; }
+.brand-icon svg { width: 20px; }
+.brand h1 { font-size: 18px; letter-spacing: -.3px; font-weight: 650; }
+.brand div > span { margin-top: 1px; font-size: 11px; }
+.local-label > span { background: #638976; }
+.refresh-button { border-color: #d9dcdf; color: #303840; border-radius: 5px; background: #fff; }
+.refresh-button:hover:not(:disabled) { background: #f0f2f3; }
+.language-button { color: #626870; }
+.page-tabs { margin-top: 10px; gap: 30px; }
+.page-tabs button { font-size: 13px; font-weight: 550; border-bottom-width: 2px; padding: 14px 0; }
+.page-tabs button.active { color: #22272b; border-bottom-color: #30363b; }
+.filter-bar { padding-top: 22px; }
+.period-buttons button { color: #62676d; border-radius: 5px; padding: 8px 13px; }
+.period-buttons button:hover, .icon-button:hover:not(:disabled) { background: #ededeb; }
+.period-buttons .selected { background: #e7e9e9; color: #20262a; }
+select, input[type="date"] { color: #373d42; border-color: #dfe1e2; border-radius: 5px; }
+.metrics { padding: 34px 0 38px; grid-template-columns: 1.15fr 1fr 1fr 1fr; }
+.metric { min-width: 0; }
+.metric-label { color: #656b70; font-size: 12px; font-weight: 500; }
+.metric-value { color: #262a2e; font-size: clamp(30px, 3vw, 42px); font-weight: 600; letter-spacing: -.045em; line-height: 1.2; margin: 11px 0 9px; overflow-wrap: anywhere; }
+.metric.primary .metric-value { color: #263f53; }
+.metric-note { color: #777d82; }
+.chart-panel { border-color: #e2e3e3; border-radius: 6px; padding: 27px 30px 17px; }
+.section-heading h2 { font-size: 18px; letter-spacing: -.2px; }
+.section-heading p { margin-top: 5px; }
+.metric-switch { background: #f0f1f1; }
+.metric-switch button.selected { color: #282e32; box-shadow: 0 1px 3px #00000014; }
+.export-button { color: #616970; }
+.chart-legend { color: #5d646a; }
+.chart-legend .legend-unit { color: #7b8186; }
+.chart-tooltip { box-shadow: 0 8px 28px #20242814; border-radius: 5px; }
+.agent-section, .cache-section, .model-section, .detail-section { margin-top: 36px; padding-bottom: 28px; }
+.agent-section .section-heading h2, .cache-section .section-heading h2, .model-section .section-heading h2, .detail-section .section-heading h2 { font-size: 16px; }
+.agent-row, .model-row { border-bottom: 1px solid #ebebea; }
+.agent-row:last-child, .model-row:last-child { border-bottom: 0; }
+.share-track, .model-bar, .composition-bar { background: #e9eae9; }
+.cost-cell { color: #344e61; }
+th { background: #eeefed; }
+td { border-color: #e9eae8; color: #50575d; }
+tbody tr:hover { background: #f0f1ef; }
+.app-footer { color: #7d8387; }
+.source-status b { color: #5f696f; }
+.source-status svg { color: #638976; }
+@media (max-width: 760px) {
+  .app-header { min-height: 78px; }
+  .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 27px 0 30px; }
+  .metric-value { font-size: clamp(25px, 6vw, 34px); }
+  .chart-panel { padding: 20px 17px 15px; }
+  .agent-row { grid-template-columns: minmax(90px, 1fr) 1fr minmax(85px, auto); }
+}
