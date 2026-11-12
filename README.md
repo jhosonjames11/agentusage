@@ -14,6 +14,18 @@ Screenshot uses synthetic demonstration data. It contains no real user usage, ac
 
 Use **Node.js 22.12+ and npm**, or **Bun** (verified with Bun **1.4.3**). No API key, database, or hosted account is required.
 
+### One-line install for macOS
+
+Run in Terminal:
+
+```sh
+bash -c 'set -o pipefail; curl -fsSL https://raw.githubusercontent.com/jhosonjames11/agentusage/main/scripts/install-macos.sh | bash'
+```
+
+The installer downloads the project, installs dependencies, builds it, and starts the dashboard. The default location is `~/Library/Application Support/AgentUsage/app`. It uses an existing Node.js 22.12+ and npm when available; otherwise it downloads and verifies a private Node.js runtime without changing the system installation. Apple Silicon and Intel Macs are supported. Internet access is required; the downloaded Node.js runtime requires macOS 13.5 or later.
+
+After installation, double-click `启动看板.command` / `停止看板.command` in the installed directory to start or stop the dashboard. If a dashboard is already running on port 4320, the launcher reuses it; if another application occupies the port, resolve that conflict first. The installer refuses to overwrite an existing installation, so rerunning it does not automatically update existing files or data.
+
 ### With Node.js and npm
 
 Clone the repository and start the dashboard:

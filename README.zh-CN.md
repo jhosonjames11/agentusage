@@ -14,6 +14,18 @@
 
 可使用 **Node.js 22.12+ 和 npm**，或 **Bun**（已验证 **1.4.3**）。无需 API Key、数据库或云端账户。
 
+### macOS 一行安装
+
+在终端运行：
+
+```sh
+bash -c 'set -o pipefail; curl -fsSL https://raw.githubusercontent.com/jhosonjames11/agentusage/main/scripts/install-macos.sh | bash'
+```
+
+安装器下载项目、安装依赖、构建并启动看板，默认安装在 `~/Library/Application Support/AgentUsage/app`。它优先使用已有的 Node.js 22.12+ 和 npm；缺少时会下载并校验专供该项目使用的 Node.js，不修改系统 Node.js。支持 Apple 芯片和 Intel Mac，需要网络连接；自动下载的 Node.js 需要 macOS 13.5 或更新版本。
+
+安装后可双击安装目录中的 `启动看板.command` 和 `停止看板.command`。如 4320 端口已有本看板的服务，启动器会复用该服务；其他程序占用该端口时需要先解决端口冲突。安装器不会覆盖已存在的安装目录，因此重复运行不会自动更新已有安装，也不会覆盖其数据。
+
 ### 使用 Node.js 和 npm
 
 克隆仓库后，在项目目录运行：
